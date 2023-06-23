@@ -8,14 +8,45 @@
 import SwiftUI
 
 struct MainView: View {
+    @State private var showingSheet = false
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationStack {
+            List {
+                Text("1")
+                Text("1")
+                Text("1")
+                Text("1")
+            }
+            .refreshable {
+                print("refresh here")
+            }
+            .onAppear()
+            .listStyle(.plain)
+            .navigationTitle("Linkding")
+            .toolbar {
+                ToolbarItemGroup(placement: .navigationBarLeading) {
+                    NavigationLink {
+                        SettingView()
+                    } label: {
+                        Image(systemName: "person.circle")
+                    }
+                }
+                ToolbarItemGroup(placement: .primaryAction) {
+                    /*/
+                    NavigationLink {
+                        Text("Add")
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                    */
+                    Button("Show Sheet") {
+                                showingSheet.toggle()
+                    }.sheet(isPresented: $showingSheet) {
+                        Text("Add")
+                    }
+                }
+            }
         }
-        .padding()
     }
 }
 

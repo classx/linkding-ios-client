@@ -8,8 +8,29 @@
 import SwiftUI
 
 struct SettingView: View {
+    @State var name: String = ""
+    @State var url: String = ""
+    @State var token: String = ""
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            Form {
+                Section(header: Text("Account")) {
+                    TextField("Name", text: $name)
+                    TextField("http://", text: $url)
+                    TextField("Token", text: $token)
+                }
+                LabeledContent("Version", value: "0.1")
+                Button("Reset all data") {
+                    // DO SOMETHING
+                }
+            }
+            .navigationTitle("Profile")
+            .toolbar {
+                Button("Save") {
+                    print("About tapped!")
+                }
+            }
+        }
     }
 }
 
