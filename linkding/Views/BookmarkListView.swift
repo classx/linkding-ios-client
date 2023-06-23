@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct BookmarkListView: View {
+    var data: [Bookmark]
     var body: some View {
         NavigationStack {
             List {
-                Text("1")
-                Text("1")
-                Text("1")
-                Text("1")
+                LazyVStack {
+                    ForEach(data) { bookmark in
+                        Text(bookmark.title)
+                    }
+                }
             }
             .refreshable {
                 print("refresh here")
@@ -26,8 +28,9 @@ struct BookmarkListView: View {
     }
 }
 
-struct BookmarkListView_Previews: PreviewProvider {
-    static var previews: some View {
-        BookmarkListView()
-    }
-}
+//struct BookmarkListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        var b = Bookmark(id: 1, title: "test", description: "test", release_date: "test", author: "", image: "nil")
+//        BookmarkListView(data: [b])
+//    }
+//}
