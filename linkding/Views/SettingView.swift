@@ -19,10 +19,15 @@ struct SettingView: View {
                     TextField("http://", text: $url)
                     TextField("Token", text: $token)
                 }
-                LabeledContent("Version", value: "0.1")
-                Button("Reset all data") {
-                    // DO SOMETHING
+                Section(header: Text("About")) {
+                    LabeledContent("Version", value: "0.1")
                 }
+                Section(){
+                    Button("Reset all data") {
+                        // DO SOMETHING
+                    }
+                }
+                
             }
             .navigationTitle("Profile")
             .toolbar {
