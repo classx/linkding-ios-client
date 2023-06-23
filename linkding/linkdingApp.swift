@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct linkdingApp: App {
+    @StateObject var data: DataStore = DataStore(NetworkManager())
     var body: some Scene {
         WindowGroup {
             MainView()
+                .environmentObject(data)
         }
     }
 }

@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct MainView: View {
-    @State private var showingSheet = false
-    
+    @EnvironmentObject var data: DataStore
     
     var body: some View {
         TabView {
-            BookmarkListView()
+            BookmarkListView(data: data.bookmarks)
             .tabItem {
                     Label("Bookmarks", systemImage: "bookmark.circle")
             }
