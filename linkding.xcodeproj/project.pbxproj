@@ -12,12 +12,13 @@
 		8A07CE942A3F45D400C6D4AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A07CE932A3F45D400C6D4AA /* Assets.xcassets */; };
 		8A07CE972A3F45D400C6D4AA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A07CE962A3F45D400C6D4AA /* Preview Assets.xcassets */; };
 		8A07CEA12A3F47A600C6D4AA /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07CEA02A3F47A600C6D4AA /* SettingView.swift */; };
+		8A34CF502A46138D0001242D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A34CF4F2A46138D0001242D /* API.swift */; };
+		8A34CF522A4619A20001242D /* BookmarkItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A34CF512A4619A20001242D /* BookmarkItemView.swift */; };
 		8A5D63252A45C26900EC38AA /* BookmarkListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D63242A45C26900EC38AA /* BookmarkListView.swift */; };
 		8A5D63282A45C2BD00EC38AA /* AddBookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D63272A45C2BD00EC38AA /* AddBookmarkView.swift */; };
-		8A5D632B2A45C64800EC38AA /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D632A2A45C64800EC38AA /* NetworkLayer.swift */; };
-		8A5D632E2A45C67100EC38AA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D632D2A45C67100EC38AA /* NetworkManager.swift */; };
-		8A5D63312A45C6D100EC38AA /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D63302A45C6D100EC38AA /* DataStore.swift */; };
 		8A5D63332A45C79700EC38AA /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D63322A45C79700EC38AA /* Bookmark.swift */; };
+		8AAC270A2A497C5300FCAF1B /* LoadErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAC27092A497C5300FCAF1B /* LoadErrorView.swift */; };
+		8AAC270C2A497E5A00FCAF1B /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAC270B2A497E5A00FCAF1B /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,12 +28,13 @@
 		8A07CE932A3F45D400C6D4AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A07CE962A3F45D400C6D4AA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8A07CEA02A3F47A600C6D4AA /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		8A34CF4F2A46138D0001242D /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		8A34CF512A4619A20001242D /* BookmarkItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkItemView.swift; sourceTree = "<group>"; };
 		8A5D63242A45C26900EC38AA /* BookmarkListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListView.swift; sourceTree = "<group>"; };
 		8A5D63272A45C2BD00EC38AA /* AddBookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkView.swift; sourceTree = "<group>"; };
-		8A5D632A2A45C64800EC38AA /* NetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
-		8A5D632D2A45C67100EC38AA /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		8A5D63302A45C6D100EC38AA /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		8A5D63322A45C79700EC38AA /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
+		8AAC27092A497C5300FCAF1B /* LoadErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadErrorView.swift; sourceTree = "<group>"; };
+		8AAC270B2A497E5A00FCAF1B /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,9 +67,7 @@
 		8A07CE8E2A3F45D300C6D4AA /* linkding */ = {
 			isa = PBXGroup;
 			children = (
-				8A5D632F2A45C6C100EC38AA /* ViewModel */,
-				8A5D632C2A45C66500EC38AA /* Data */,
-				8A5D63292A45C62E00EC38AA /* Protocols */,
+				8A34CF4E2A46137D0001242D /* API */,
 				8A07CE9F2A3F474600C6D4AA /* Models */,
 				8A07CE9E2A3F473B00C6D4AA /* Views */,
 				8A07CE8F2A3F45D300C6D4AA /* linkdingApp.swift */,
@@ -92,6 +92,9 @@
 				8A5D63272A45C2BD00EC38AA /* AddBookmarkView.swift */,
 				8A5D63242A45C26900EC38AA /* BookmarkListView.swift */,
 				8A07CEA02A3F47A600C6D4AA /* SettingView.swift */,
+				8A34CF512A4619A20001242D /* BookmarkItemView.swift */,
+				8AAC27092A497C5300FCAF1B /* LoadErrorView.swift */,
+				8AAC270B2A497E5A00FCAF1B /* LoadingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -104,28 +107,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		8A5D63292A45C62E00EC38AA /* Protocols */ = {
+		8A34CF4E2A46137D0001242D /* API */ = {
 			isa = PBXGroup;
 			children = (
-				8A5D632A2A45C64800EC38AA /* NetworkLayer.swift */,
+				8A34CF4F2A46138D0001242D /* API.swift */,
 			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		8A5D632C2A45C66500EC38AA /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				8A5D632D2A45C67100EC38AA /* NetworkManager.swift */,
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
-		8A5D632F2A45C6C100EC38AA /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				8A5D63302A45C6D100EC38AA /* DataStore.swift */,
-			);
-			path = ViewModel;
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,14 +185,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A5D632B2A45C64800EC38AA /* NetworkLayer.swift in Sources */,
-				8A5D63312A45C6D100EC38AA /* DataStore.swift in Sources */,
 				8A5D63282A45C2BD00EC38AA /* AddBookmarkView.swift in Sources */,
+				8AAC270A2A497C5300FCAF1B /* LoadErrorView.swift in Sources */,
 				8A5D63332A45C79700EC38AA /* Bookmark.swift in Sources */,
+				8A34CF502A46138D0001242D /* API.swift in Sources */,
 				8A07CEA12A3F47A600C6D4AA /* SettingView.swift in Sources */,
-				8A5D632E2A45C67100EC38AA /* NetworkManager.swift in Sources */,
 				8A07CE922A3F45D300C6D4AA /* MainView.swift in Sources */,
 				8A5D63252A45C26900EC38AA /* BookmarkListView.swift in Sources */,
+				8A34CF522A4619A20001242D /* BookmarkItemView.swift in Sources */,
+				8AAC270C2A497E5A00FCAF1B /* LoadingView.swift in Sources */,
 				8A07CE902A3F45D300C6D4AA /* linkdingApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
