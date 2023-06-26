@@ -14,7 +14,7 @@ struct Bookmark: Codable, Identifiable, Equatable {
     let id: Int
     let url: String
     let title: String
-    let description: String?
+    let description: String
     let notes: String?
     let website_title: String?
     let website_description: String?
