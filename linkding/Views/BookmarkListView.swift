@@ -8,29 +8,35 @@
 import SwiftUI
 
 struct BookmarkListView: View {
-    var data: [Bookmark]
+    @StateObject var bookmarks = Api()
     var body: some View {
-        NavigationStack {
-            List {
-                LazyVStack {
-                    ForEach(data) { bookmark in
-                        Text(bookmark.title)
+        if (bookmarks.status == Status.success){
+            NavigationStack {
+                List {
+                    ForEach(bookmarks.filteredBookmarks) { bookmark in
+                        NavigationLink(destination: Text("You reached here via NaviagtionLink")) {
+                            BookmarkItemView(item: bookmark)
+                        }
                     }
                 }
+                .searchable(text: $bookmarks.searchText)
+                .refreshable {
+                    bookmarks.reloadData()
+                }
+                .listStyle(.plain)
+                .navigationTitle("Linkding")
+                
             }
-            .refreshable {
-                print("refresh here")
-            }
-            .onAppear()
-            .listStyle(.plain)
-            .navigationTitle("Linkding")
+        } else if (bookmarks.status == Status.error) {
+            LoadErrorView()
+        } else {
+            LoadingView()
         }
     }
 }
 
-//struct BookmarkListView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        var b = Bookmark(id: 1, title: "test", description: "test", release_date: "test", author: "", image: "nil")
-//        BookmarkListView(data: [b])
-//    }
-//}
+struct BookmarkListView_Previews: PreviewProvider {
+    static var previews: some View {
+        BookmarkListView()
+    }
+}

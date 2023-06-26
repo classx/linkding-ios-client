@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct MainView: View {
-    @EnvironmentObject var data: DataStore
     
     var body: some View {
         TabView {
-            BookmarkListView(data: data.bookmarks)
+            BookmarkListView()
             .tabItem {
                     Label("Bookmarks", systemImage: "bookmark.circle")
             }
