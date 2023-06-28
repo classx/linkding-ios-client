@@ -20,6 +20,32 @@ struct BookmarkItemView: View {
                 Spacer()
             }
         }//.padding(.bottom, 10)
+        .swipeActions(edge: .trailing){
+
+            Button {
+                print("Delete")
+            } label: {
+                Label("Delete", systemImage: "trash")
+            }
+            .tint(.red)
+            
+            Button {
+                print("Share")
+            } label: {
+                Label("Share", systemImage: "square.and.arrow.up")
+            }
+            .tint(.indigo)
+            
+            
+        }
+        .swipeActions(edge: .leading) {
+            Button {
+                print("Mark as favorite")
+            } label: {
+                Label("Unread", systemImage: "star")
+            }
+            .tint(.blue)
+        }
     }
 }
 
