@@ -21,7 +21,7 @@ struct MainView: View {
             }
             SettingView()
             .tabItem {
-                    Label("Setting", systemImage: "gearshape.2")
+                    Label("Setting", systemImage: "slider.horizontal.3")
             }
        }
     }
