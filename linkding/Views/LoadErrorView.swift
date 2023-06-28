@@ -9,7 +9,15 @@ import SwiftUI
 
 struct LoadErrorView: View {
     var body: some View {
-        Text("Eroooo")
+        VStack{
+            Image("errorImage")
+            Text("Failed load data").padding(.bottom, 25)
+            Button {
+                print("Goto setting")
+            } label: {
+                Label("Goto setting", systemImage: "slider.horizontal.3")
+            }
+        }
     }
 }
 

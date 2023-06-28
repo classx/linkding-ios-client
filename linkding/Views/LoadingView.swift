@@ -9,7 +9,10 @@ import SwiftUI
 
 struct LoadingView: View {
     var body: some View {
-        Text("Loading")
+        VStack {
+            Image("loadingImage").resizable().scaledToFit().frame(width: 300)
+            Text("loading data")
+        }
     }
 }
 
