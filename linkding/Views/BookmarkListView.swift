@@ -25,7 +25,16 @@ struct BookmarkListView: View {
                 }
                 .listStyle(.plain)
                 .navigationTitle("Linkding")
-                
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        HStack {
+                            Image(systemName: "paperclip.circle.fill").foregroundColor(.purple)
+                            Text("Linkding")
+                            Spacer()
+                        }
+                    }
+                }
             }
         } else if (bookmarks.status == Status.error) {
             LoadErrorView()
