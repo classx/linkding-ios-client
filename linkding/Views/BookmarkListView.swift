@@ -9,37 +9,86 @@ import SwiftUI
 
 struct BookmarkListView: View {
     @StateObject var bookmarks = Api()
+    @State var presentSettingsSheet = false
+    @State var presentAddFormSheet = false
+    
     var body: some View {
-        if (bookmarks.status == Status.success){
-            NavigationStack {
-                List {
-                    ForEach(bookmarks.filteredBookmarks) { bookmark in
-                        NavigationLink(destination: Text("You reached here via NaviagtionLink")) {
-                            BookmarkItemView(item: bookmark)
+        NavigationStack {
+            Group {
+                if (bookmarks.status == Status.success){
+                    List {
+                        ForEach(bookmarks.filteredBookmarks) { bookmark in
+                           // NavigationLink(destination: BookmarkItemDetailView(item: bookmark)) {
+                                BookmarkItemView(item: bookmark)
+                                .onTapGesture {}
+                                .contextMenu {
+                                    Group {
+                                        Button {
+                                            print("copy")
+                                        } label: {
+                                            Label("Copy URL", systemImage: "doc.on.doc")
+                                        }
+                                        Button {
+                                            print("share")
+                                        } label: {
+                                            Label("Share", systemImage: "square.and.arrow.up")
+                                        }
+                                        Button {
+                                            openBookmartURL(url: bookmark.url)
+                                        } label: {
+                                            Label("Open in Safari", systemImage: "safari")
+                                        }
+                                        Divider()
+                                        Button {
+                                            print("delete")
+                                        } label: {
+                                            Label("Delete", systemImage: "delete.left")
+                                        }
+                                    }
+                                }
+                           // }
                         }
                     }
-                }
-                .searchable(text: $bookmarks.searchText)
-                .refreshable {
-                    bookmarks.reloadData()
-                }
-                .listStyle(.plain)
-                .navigationTitle("Linkding")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        HStack {
-                            Image(systemName: "paperclip.circle.fill").foregroundColor(.purple)
-                            Text("Linkding")
-                            Spacer()
-                        }
+                    .searchable(text: $bookmarks.searchText)
+                    .refreshable {
+                        bookmarks.reloadData()
                     }
+                    .listStyle(.plain)
+                } else if (bookmarks.status == Status.error) {
+                    LoadErrorView()
+                } else {
+                    LoadingView()
                 }
             }
-        } else if (bookmarks.status == Status.error) {
-            LoadErrorView()
-        } else {
-            LoadingView()
+            .sheet(isPresented: $presentSettingsSheet) {
+                print("Sheet dismissed!")
+            } content: {
+                SettingView()
+            }
+            .sheet(isPresented: $presentAddFormSheet) {
+                print("Sheet dismissed!")
+            } content: {
+                AddBookmarkView()
+            }
+            .navigationTitle("Linkding")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(leading:
+                Button(action: {
+                    presentSettingsSheet.toggle()
+                }) {
+                    Image(systemName: "gearshape.2")
+                }
+            )
+            .navigationBarItems(
+                trailing:
+                    Button(action: {
+                        presentAddFormSheet.toggle()
+                    }) {
+                        Image(systemName: "square.and.pencil")
+                    }
+                
+            )
+            
         }
     }
 }
