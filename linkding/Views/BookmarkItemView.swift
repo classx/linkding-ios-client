@@ -30,9 +30,13 @@ struct BookmarkItemView: View {
             .tint(.red)
             
             Button {
-                print("Share")
+                let url: URL? = URL(string: self.item.url)!
+                guard url != nil else {
+                    return
+                }
+                UIApplication.shared.open(url!)
             } label: {
-                Label("Share", systemImage: "square.and.arrow.up")
+                Label("Open in Safari", systemImage: "safari")
             }
             .tint(.indigo)
             
