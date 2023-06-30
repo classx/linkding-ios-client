@@ -23,6 +23,13 @@ struct BookmarkItemView: View {
         .swipeActions(edge: .trailing){
 
             Button {
+                openBookmartURL(url: self.item.url)
+            } label: {
+                Label("Open in Safari", systemImage: "safari")
+            }
+            .tint(.indigo)
+            
+            Button {
                 print("Delete")
             } label: {
                 Label("Delete", systemImage: "trash")
@@ -30,23 +37,17 @@ struct BookmarkItemView: View {
             .tint(.red)
             
             Button {
-                let url: URL? = URL(string: self.item.url)!
-                guard url != nil else {
-                    return
-                }
-                UIApplication.shared.open(url!)
+                //openBookmartURL(url: self.item.url)
             } label: {
-                Label("Open in Safari", systemImage: "safari")
+                Label("Share", systemImage: "square.and.arrow.up")
             }
-            .tint(.indigo)
-            
-            
+            //.tint(.indigo)
         }
         .swipeActions(edge: .leading) {
             Button {
-                print("Mark as favorite")
+                print("Copy URL")
             } label: {
-                Label("Unread", systemImage: "star")
+                Label("Copy URL", systemImage: "doc.on.doc")
             }
             .tint(.blue)
         }
