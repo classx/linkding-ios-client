@@ -11,6 +11,7 @@ struct SettingView: View {
     @State var name: String = ""
     @State var url: String = ""
     @State var token: String = ""
+    @Environment(\.dismiss) private var dismiss
     var body: some View {
         NavigationStack {
             Form {
@@ -25,16 +26,32 @@ struct SettingView: View {
                 Section(){
                     Button("Reset all data") {
                         // DO SOMETHING
+                        dismiss()
                     }
                 }
                 
             }
-            .navigationTitle("Profile")
-            .toolbar {
-                Button("Save") {
-                    print("About tapped!")
+            .navigationTitle("Profile")            
+            .navigationBarItems(leading:
+                Button(action: {
+                    dismiss()
+                }) {
+                    Text("Cancel")
                 }
-            }
+            )
+            .navigationBarItems(
+                trailing:
+                    Button(action: {
+                        dismiss()
+                    }) {
+                        Text("Save")
+                    }
+                
+            )
+            
+            
+            
+            
         }
     }
 }
