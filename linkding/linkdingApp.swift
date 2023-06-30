@@ -11,8 +11,7 @@ import SwiftUI
 struct linkdingApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView()
-               // .environmentObject(data)
+            BookmarkListView()
         }
     }
 }
