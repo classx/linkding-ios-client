@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Drops
 
 struct BookmarkListView: View {
     @StateObject var bookmarks = Api()
@@ -25,6 +26,7 @@ struct BookmarkListView: View {
                                     Group {
                                         Button {
                                             CopyToClip(text: bookmark.url)
+                                            Drops.show(copyDrops())
                                         } label: {
                                             Label("Copy URL", systemImage: "doc.on.doc")
                                         }
@@ -73,7 +75,7 @@ struct BookmarkListView: View {
                     presentSettingsSheet.toggle()
                 }) {
                     Image(systemName: "gearshape.2")
-                }
+                }.accentColor(.black)
             )
             .navigationBarItems(
                 trailing:
