@@ -17,9 +17,23 @@
 		8A5D63252A45C26900EC38AA /* BookmarkListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D63242A45C26900EC38AA /* BookmarkListView.swift */; };
 		8A5D63282A45C2BD00EC38AA /* AddBookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D63272A45C2BD00EC38AA /* AddBookmarkView.swift */; };
 		8A5D63332A45C79700EC38AA /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D63322A45C79700EC38AA /* Bookmark.swift */; };
+		8AA7A51B2A51F452006F3936 /* Drops in Frameworks */ = {isa = PBXBuildFile; productRef = 8AA7A51A2A51F452006F3936 /* Drops */; };
 		8AAC270A2A497C5300FCAF1B /* LoadErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAC27092A497C5300FCAF1B /* LoadErrorView.swift */; };
 		8AAC270C2A497E5A00FCAF1B /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAC270B2A497E5A00FCAF1B /* LoadingView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8AA7A5152A51EA20006F3936 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8A07CE8C2A3F45D300C6D4AA /* linkding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = linkding.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AA7A51B2A51F452006F3936 /* Drops in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,12 +140,16 @@
 				8A07CE882A3F45D300C6D4AA /* Sources */,
 				8A07CE892A3F45D300C6D4AA /* Frameworks */,
 				8A07CE8A2A3F45D300C6D4AA /* Resources */,
+				8AA7A5152A51EA20006F3936 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = linkding;
+			packageProductDependencies = (
+				8AA7A51A2A51F452006F3936 /* Drops */,
+			);
 			productName = linkding;
 			productReference = 8A07CE8C2A3F45D300C6D4AA /* linkding.app */;
 			productType = "com.apple.product-type.application";
@@ -159,6 +178,9 @@
 				Base,
 			);
 			mainGroup = 8A07CE832A3F45D300C6D4AA;
+			packageReferences = (
+				8AA7A5192A51F452006F3936 /* XCRemoteSwiftPackageReference "Drops" */,
+			);
 			productRefGroup = 8A07CE8D2A3F45D300C6D4AA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -318,6 +340,7 @@
 		8A07CE9B2A3F45D400C6D4AA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -349,6 +372,7 @@
 		8A07CE9C2A3F45D400C6D4AA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -399,6 +423,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8AA7A5192A51F452006F3936 /* XCRemoteSwiftPackageReference "Drops" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/omaralbeik/Drops.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.6.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8AA7A51A2A51F452006F3936 /* Drops */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8AA7A5192A51F452006F3936 /* XCRemoteSwiftPackageReference "Drops" */;
+			productName = Drops;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8A07CE842A3F45D300C6D4AA /* Project object */;
 }
