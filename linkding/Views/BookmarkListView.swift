@@ -24,15 +24,11 @@ struct BookmarkListView: View {
                                 .contextMenu {
                                     Group {
                                         Button {
-                                            print("copy")
+                                            CopyToClip(text: bookmark.url)
                                         } label: {
                                             Label("Copy URL", systemImage: "doc.on.doc")
                                         }
-                                        Button {
-                                            print("share")
-                                        } label: {
-                                            Label("Share", systemImage: "square.and.arrow.up")
-                                        }
+                                        ShareLink("Share", item: URL(string: bookmark.url)!)
                                         Button {
                                             openBookmartURL(url: bookmark.url)
                                         } label: {

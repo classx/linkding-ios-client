@@ -16,4 +16,8 @@ func openBookmartURL(url: String) {
     UIApplication.shared.open(url!)
 }
 
+func CopyToClip(text: String){
+    UIPasteboard.general.string = text
+}
+
 

@@ -36,16 +36,12 @@ struct BookmarkItemView: View {
             }
             .tint(.red)
             
-            Button {
-                //openBookmartURL(url: self.item.url)
-            } label: {
-                Label("Share", systemImage: "square.and.arrow.up")
-            }
-            //.tint(.indigo)
+            ShareLink("Share", item: URL(string: item.url)!)
+            .tint(.yellow)
         }
         .swipeActions(edge: .leading) {
             Button {
-                print("Copy URL")
+                CopyToClip(text: self.item.url)
             } label: {
                 Label("Copy URL", systemImage: "doc.on.doc")
             }
@@ -53,6 +49,7 @@ struct BookmarkItemView: View {
         }
     }
 }
+
 
 //struct BookmarkItemView_Previews: PreviewProvider {
 //    static var previews: some View {
