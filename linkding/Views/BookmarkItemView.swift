@@ -9,7 +9,7 @@ import SwiftUI
 import Drops
 
 struct BookmarkItemView: View {
-        
+    @State private var isPresentingConfirm: Bool = false
     var item: Bookmark
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -22,33 +22,7 @@ struct BookmarkItemView: View {
                 Spacer()
             }
         }//.padding(.bottom, 10)
-        .swipeActions(edge: .trailing){
-            Button {
-                openBookmartURL(url: self.item.url)
-            } label: {
-                Label("Open in Safari", systemImage: "safari")
-            }
-            .tint(.indigo)
-            
-            Button {
-                print("Delete")
-            } label: {
-                Label("Delete", systemImage: "trash")
-            }
-            .tint(.red)
-            
-            ShareLink("Share", item: URL(string: item.url)!)
-            .tint(.yellow)
-        }
-        .swipeActions(edge: .leading) {
-            Button {
-                CopyToClip(text: self.item.url)
-                Drops.show(copyDrops())
-            } label: {
-                Label("Copy URL", systemImage: "doc.on.doc")
-            }
-            .tint(.blue)
-        }
+
     }
 }
 
