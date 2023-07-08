@@ -76,4 +76,35 @@ class Api : ObservableObject{
             }
         }.resume()
     }
+
+    func delete(item: Bookmark){
+        lazy var deleteUrlItem: URLComponents = {
+            var components = URLComponents()
+            components.scheme = "https"
+            components.host = apiDomain
+            components.path = "/api/bookmarks/\(item.id)/"
+            return components
+        }()
+        /// Unwraps the URL, there's no fallback since the URL is hardcoded.
+        lazy var deleteUrl: URL = {
+            guard let unwrappedUrl = deleteUrlItem.url else { fatalError("Wrong URL") }
+            return unwrappedUrl
+        }()
+        
+        var request = URLRequest(url: deleteUrl)
+        request.httpMethod = "DELETE"
+        for (key, value) in headers {
+            request.setValue(value, forHTTPHeaderField: key)
+        }
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            DispatchQueue.main.async {
+                self.deleteItem(item: item)
+            }
+        }.resume()
+    }
+    
+    func deleteItem(item: Bookmark){
+        self.books = self.books.filter { $0.id != item.id }
+    }
+    
 }

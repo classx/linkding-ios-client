@@ -21,28 +21,37 @@ struct BookmarkListView: View {
                         ForEach(bookmarks.filteredBookmarks) { bookmark in
                            // NavigationLink(destination: BookmarkItemDetailView(item: bookmark)) {
                                 BookmarkItemView(item: bookmark)
-                                .onTapGesture {}
-                                .contextMenu {
-                                    Group {
-                                        Button {
-                                            CopyToClip(text: bookmark.url)
-                                            Drops.show(copyDrops())
-                                        } label: {
-                                            Label("Copy URL", systemImage: "doc.on.doc")
-                                        }
-                                        ShareLink("Share", item: URL(string: bookmark.url)!)
-                                        Button {
-                                            openBookmartURL(url: bookmark.url)
-                                        } label: {
-                                            Label("Open in Safari", systemImage: "safari")
-                                        }
-                                        Divider()
-                                        Button {
-                                            print("delete")
-                                        } label: {
-                                            Label("Delete", systemImage: "delete.left")
-                                        }
+                            
+                                .swipeActions(edge: .trailing){
+                                    Button {
+                                        openBookmartURL(url: bookmark.url)
+                                    } label: {
+                                        Label("Open in Safari", systemImage: "safari")
                                     }
+                                    .tint(.indigo)
+                                    
+                                    Button(
+                                        role: .destructive,
+                                        action: {
+                                            print("remove here")
+                                            bookmarks.delete(item: bookmark)
+                                        }
+                                    ) {
+                                        Label("Delete", systemImage: "trash")
+                                    }
+                                    .tint(.red)
+                                    
+                                    ShareLink("Share", item: URL(string: bookmark.url)!)
+                                    .tint(.yellow)
+                                }
+                                .swipeActions(edge: .leading) {
+                                    Button {
+                                        CopyToClip(text: bookmark.url)
+                                        Drops.show(copyDrops())
+                                    } label: {
+                                        Label("Copy URL", systemImage: "doc.on.doc")
+                                    }
+                                    .tint(.blue)
                                 }
                            // }
                         }
