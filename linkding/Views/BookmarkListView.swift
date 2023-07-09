@@ -31,18 +31,18 @@ struct BookmarkListView: View {
                                         Label("Open in Safari", systemImage: "safari")
                                     }
                                     .tint(.indigo)
-                                    
                                     Button(
                                         role: .destructive,
                                         action: {
-                                            print("remove here")
                                             bookmarks.delete(item: bookmark)
+                                            Drops.show(
+                                                makeDrops(title: "Removed", image: UIImage(systemName: "trash")!, accessibilityText: "Alert! Removed object.")
+                                            )
                                         }
                                     ) {
                                         Label("Delete", systemImage: "trash")
                                     }
                                     .tint(.red)
-                                    
                                     ShareLink("Share", item: URL(string: bookmark.url)!)
                                     .tint(.yellow)
                                 }
