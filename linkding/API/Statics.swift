@@ -36,3 +36,18 @@ func copyDrops() -> Drop {
     return drop
 }
 
+func makeDrops(title: String, image: UIImage, accessibilityText: Drop.Accessibility = "") -> Drop {
+    let drop = Drop(
+        title: title,
+        icon: UIImage(systemName: "link"),
+        action: .init {
+            Drops.hideCurrent()
+        },
+        position: .top,
+        duration: 2.0,
+        accessibility: accessibilityText
+    )
+    return drop
+}
+
+
