@@ -9,6 +9,8 @@ import SwiftUI
 import Drops
 
 struct BookmarkListView: View {
+    let haptic = UINotificationFeedbackGenerator()
+
     @StateObject var bookmarks = Api()
     @State var presentSettingsSheet = false
     @State var presentAddFormSheet = false
@@ -47,6 +49,7 @@ struct BookmarkListView: View {
                                 .swipeActions(edge: .leading) {
                                     Button {
                                         CopyToClip(text: bookmark.url)
+                                        self.haptic.notificationOccurred(.success)
                                         Drops.show(copyDrops())
                                     } label: {
                                         Label("Copy URL", systemImage: "doc.on.doc")
