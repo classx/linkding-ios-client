@@ -9,47 +9,70 @@ import Foundation
 import SwiftUI
 import Combine
 
-
 enum Status {
     case success
     case loading
     case error
 }
 
-class Api : ObservableObject{
+class Api : ObservableObject {
     
     @Published var books = [Bookmark]()
     @Published var searchText: String = ""
     @Published var status: Status = Status.loading
     
-    private let apiDomain: String = "domain"
-    private let apiEndPoint: String = "/api/bookmarks/"
+    private var apiDomain: String = ""
+    private var apiToken: String = ""
+    private var apiEndPoint: String = "/api/bookmarks/"
         
-    let headers = ["Authorization": "Token <TOKEN>"]
+    private var headers = ["Authorization": "Token <TOKEN>"]
     
-    init(){
-        reloadData()
+    func setProperty(domain: String, token: String){
+        objectWillChange.send()
+        self.apiToken = token
+        self.apiDomain = domain
+        self.headers = ["Authorization": "Token \(self.apiToken)"]
+    }
+    
+    func resetBooksList(){
+        objectWillChange.send()
+        self.books = [Bookmark]()
+        self.newsUrlComponents = {
+            var components = URLComponents()
+            components.scheme = "https"
+            components.host = self.apiDomain
+            components.path = self.apiEndPoint
+            return components
+        }()
+        self.compileUrl = {
+            guard let unwrappedUrl = newsUrlComponents.url else { fatalError("Wrong URL") }
+            return unwrappedUrl
+        }()
     }
 
     func reloadData(){
-        self.status = Status.loading
-        loadData { (loaded_bookmarks) in
-            self.books = loaded_bookmarks
+        resetBooksList()
+        if !apiDomain.isEmpty && !apiToken.isEmpty {
+            loadData { (loaded_bookmarks) in
+                self.books = loaded_bookmarks
+            }
+        } else {
+            self.status = Status.error
         }
     }
     
     var filteredBookmarks: [Bookmark] {
-           guard !searchText.isEmpty else { return books }
-           return books.filter { book in
-               book.title.lowercased().contains(searchText.lowercased())
-           }
+       guard !searchText.isEmpty else { return books }
+       return books.filter { book in
+           book.title.lowercased().contains(searchText.lowercased())
        }
+    }
     
     lazy private var newsUrlComponents: URLComponents = {
         var components = URLComponents()
         components.scheme = "https"
-        components.host = apiDomain
-        components.path = apiEndPoint
+        components.host = self.apiDomain
+        components.path = self.apiEndPoint
         return components
     }()
     /// Unwraps the URL, there's no fallback since the URL is hardcoded.
@@ -61,10 +84,18 @@ class Api : ObservableObject{
     func loadData(completion:@escaping ([Bookmark]) -> ()) {
         var request = URLRequest(url: compileUrl)
         request.httpMethod = "GET"
+        self.status = Status.loading
         for (key, value) in headers {
             request.setValue(value, forHTTPHeaderField: key)
         }
         URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let _ = data, error == nil else {
+                DispatchQueue.main.async {
+                    self.status = Status.error
+                }
+                return
+            }
+             
             do {
                 let bookmarksList = try JSONDecoder().decode(JsonBookmarks.self, from: data!)
                 DispatchQueue.main.async {
@@ -74,6 +105,7 @@ class Api : ObservableObject{
             }catch {
                 self.status = Status.error
             }
+             
         }.resume()
     }
 
