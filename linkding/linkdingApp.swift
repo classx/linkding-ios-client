@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct linkdingApp: App {
+    @StateObject var appSettings = AppSettings()
     var body: some Scene {
         WindowGroup {
-            BookmarkListView()
+            BookmarkListView().environmentObject(appSettings)
         }
     }
 }
