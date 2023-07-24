@@ -15,6 +15,7 @@
 		8A34CF522A4619A20001242D /* BookmarkItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A34CF512A4619A20001242D /* BookmarkItemView.swift */; };
 		8A3EB1612A4F14FB00607DF0 /* Statics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3EB1602A4F14FB00607DF0 /* Statics.swift */; };
 		8A4630FC2A6312B8009E9558 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4630FB2A6312B8009E9558 /* NetworkMonitor.swift */; };
+		8A54F7F22A6D882D003C4DE4 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A54F7F12A6D882D003C4DE4 /* AppSettings.swift */; };
 		8A5D63252A45C26900EC38AA /* BookmarkListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D63242A45C26900EC38AA /* BookmarkListView.swift */; };
 		8A5D63282A45C2BD00EC38AA /* AddBookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D63272A45C2BD00EC38AA /* AddBookmarkView.swift */; };
 		8A5D63332A45C79700EC38AA /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D63322A45C79700EC38AA /* Bookmark.swift */; };
@@ -46,6 +47,7 @@
 		8A34CF512A4619A20001242D /* BookmarkItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkItemView.swift; sourceTree = "<group>"; };
 		8A3EB1602A4F14FB00607DF0 /* Statics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statics.swift; sourceTree = "<group>"; };
 		8A4630FB2A6312B8009E9558 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		8A54F7F12A6D882D003C4DE4 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		8A5D63242A45C26900EC38AA /* BookmarkListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListView.swift; sourceTree = "<group>"; };
 		8A5D63272A45C2BD00EC38AA /* AddBookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkView.swift; sourceTree = "<group>"; };
 		8A5D63322A45C79700EC38AA /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				8A5D63322A45C79700EC38AA /* Bookmark.swift */,
+				8A54F7F12A6D882D003C4DE4 /* AppSettings.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 			files = (
 				8A4630FC2A6312B8009E9558 /* NetworkMonitor.swift in Sources */,
 				8A5D63282A45C2BD00EC38AA /* AddBookmarkView.swift in Sources */,
+				8A54F7F22A6D882D003C4DE4 /* AppSettings.swift in Sources */,
 				8AAC270A2A497C5300FCAF1B /* LoadErrorView.swift in Sources */,
 				8A5D63332A45C79700EC38AA /* Bookmark.swift in Sources */,
 				8A34CF502A46138D0001242D /* API.swift in Sources */,
