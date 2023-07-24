@@ -9,6 +9,9 @@ import SwiftUI
 import Drops
 
 struct BookmarkListView: View {
+    
+    @EnvironmentObject var settings: AppSettings
+    
     let haptic = UINotificationFeedbackGenerator()
 
     @StateObject var bookmarks = Api()
@@ -70,10 +73,12 @@ struct BookmarkListView: View {
                     LoadingView()
                 }
             }
-            .sheet(isPresented: $presentSettingsSheet) {
-                print("Sheet dismissed!")
-            } content: {
-                SettingView()
+            .sheet(isPresented: $presentSettingsSheet, onDismiss: {
+                settings.objectWillChange.send()
+                bookmarks.setProperty(domain: settings.domain, token: settings.token)
+                bookmarks.reloadData()
+            }) {
+                SettingView().environmentObject(settings)
             }
             .sheet(isPresented: $presentAddFormSheet) {
                 print("Sheet dismissed!")
@@ -98,7 +103,10 @@ struct BookmarkListView: View {
                     }
                 
             )
-            
+            .onAppear {
+                bookmarks.setProperty(domain: settings.domain, token: settings.token)
+                bookmarks.reloadData()
+            }
         }
     }
 }
