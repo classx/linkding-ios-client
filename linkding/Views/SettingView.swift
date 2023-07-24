@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SettingView: View {
+    @EnvironmentObject var settings: AppSettings
     @State var name: String = ""
     @State var url: String = ""
     @State var token: String = ""
@@ -16,9 +17,8 @@ struct SettingView: View {
         NavigationStack {
             Form {
                 Section(header: Text("Account")) {
-                    TextField("Name", text: $name)
-                    TextField("http://", text: $url)
-                    TextField("Token", text: $token)
+                    TextField("http://", text: settings.$domain)
+                    TextField("Token", text: settings.$token)
                 }
                 Section(header: Text("About")) {
                     LabeledContent("Version", value: "0.1")
@@ -32,13 +32,13 @@ struct SettingView: View {
                 
             }
             .navigationTitle("Profile")            
-            .navigationBarItems(leading:
-                Button(action: {
-                    dismiss()
-                }) {
-                    Text("Cancel")
-                }
-            )
+//            .navigationBarItems(leading:
+//                Button(action: {
+//                    dismiss()
+//                }) {
+//                    Text("Cancel")
+//                }
+//            )
             .navigationBarItems(
                 trailing:
                     Button(action: {
