@@ -31,20 +31,13 @@ struct SettingView: View {
                 }
                 
             }
-            .navigationTitle("Profile")            
-//            .navigationBarItems(leading:
-//                Button(action: {
-//                    dismiss()
-//                }) {
-//                    Text("Cancel")
-//                }
-//            )
+            .navigationTitle("Profile")
             .navigationBarItems(
                 trailing:
                     Button(action: {
                         dismiss()
                     }) {
-                        Text("Save")
+                        Text("Save").foregroundColor(Color("buttonColor"))
                     }
                 
             )
