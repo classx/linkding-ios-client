@@ -14,11 +14,11 @@ struct BookmarkItemView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack{
-                Text(item.title).font(.system(.headline, design: .rounded)).lineLimit(1)
+                Text(item.title).font(.system(.headline, design: .monospaced)).foregroundColor(Color("titleColor")).lineLimit(1)
                 Spacer()
             }
             HStack{
-                Text(item.description).font(.system(.body, design: .rounded)).lineLimit(2)
+                Text(item.description).font(.system(.body, design: .monospaced)).foregroundColor(Color("descrtiptionColor")).lineLimit(2)
                 Spacer()
             }
         }//.padding(.bottom, 10)
