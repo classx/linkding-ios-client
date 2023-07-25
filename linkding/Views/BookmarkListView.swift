@@ -18,6 +18,12 @@ struct BookmarkListView: View {
     @State var presentSettingsSheet = false
     @State var presentAddFormSheet = false
     
+    func reload(){
+        settings.objectWillChange.send()
+        bookmarks.setProperty(domain: settings.domain, token: settings.token)
+        bookmarks.reloadData()
+    }
+    
     var body: some View {
         NavigationStack {
             Group {
@@ -64,19 +70,26 @@ struct BookmarkListView: View {
                     }
                     .searchable(text: $bookmarks.searchText)
                     .refreshable {
-                        bookmarks.reloadData()
+                        reload()
                     }
                     .listStyle(.plain)
                 } else if (bookmarks.status == Status.error) {
-                    LoadErrorView()
+                    Text("Failed load data").padding(.bottom, 25)
+                    Button {
+                        presentSettingsSheet.toggle()
+                    } label: {
+                        Label("Open settings", systemImage: "gearshape.2")
+                    }
                 } else {
-                    LoadingView()
+                    VStack {
+                        ProgressView(){
+                            Text("Loading")
+                        }
+                    }
                 }
             }
             .sheet(isPresented: $presentSettingsSheet, onDismiss: {
-                settings.objectWillChange.send()
-                bookmarks.setProperty(domain: settings.domain, token: settings.token)
-                bookmarks.reloadData()
+                reload()
             }) {
                 SettingView().environmentObject(settings)
             }
@@ -92,7 +105,7 @@ struct BookmarkListView: View {
                     presentSettingsSheet.toggle()
                 }) {
                     Image(systemName: "gearshape.2")
-                }.accentColor(.black)
+                }.accentColor(Color("buttonColor"))
             )
             .navigationBarItems(
                 trailing:
@@ -100,12 +113,11 @@ struct BookmarkListView: View {
                         presentAddFormSheet.toggle()
                     }) {
                         Image(systemName: "square.and.pencil")
-                    }
+                    }.accentColor(Color("buttonColor"))
                 
             )
             .onAppear {
-                bookmarks.setProperty(domain: settings.domain, token: settings.token)
-                bookmarks.reloadData()
+                reload()
             }
         }
     }
