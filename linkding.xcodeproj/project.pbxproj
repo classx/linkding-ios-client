@@ -20,8 +20,6 @@
 		8A5D63282A45C2BD00EC38AA /* AddBookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D63272A45C2BD00EC38AA /* AddBookmarkView.swift */; };
 		8A5D63332A45C79700EC38AA /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D63322A45C79700EC38AA /* Bookmark.swift */; };
 		8AA7A51B2A51F452006F3936 /* Drops in Frameworks */ = {isa = PBXBuildFile; productRef = 8AA7A51A2A51F452006F3936 /* Drops */; };
-		8AAC270A2A497C5300FCAF1B /* LoadErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAC27092A497C5300FCAF1B /* LoadErrorView.swift */; };
-		8AAC270C2A497E5A00FCAF1B /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAC270B2A497E5A00FCAF1B /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,8 +49,6 @@
 		8A5D63242A45C26900EC38AA /* BookmarkListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListView.swift; sourceTree = "<group>"; };
 		8A5D63272A45C2BD00EC38AA /* AddBookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkView.swift; sourceTree = "<group>"; };
 		8A5D63322A45C79700EC38AA /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
-		8AAC27092A497C5300FCAF1B /* LoadErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadErrorView.swift; sourceTree = "<group>"; };
-		8AAC270B2A497E5A00FCAF1B /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,8 +107,6 @@
 				8A5D63242A45C26900EC38AA /* BookmarkListView.swift */,
 				8A07CEA02A3F47A600C6D4AA /* SettingView.swift */,
 				8A34CF512A4619A20001242D /* BookmarkItemView.swift */,
-				8AAC27092A497C5300FCAF1B /* LoadErrorView.swift */,
-				8AAC270B2A497E5A00FCAF1B /* LoadingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -216,14 +210,12 @@
 				8A4630FC2A6312B8009E9558 /* NetworkMonitor.swift in Sources */,
 				8A5D63282A45C2BD00EC38AA /* AddBookmarkView.swift in Sources */,
 				8A54F7F22A6D882D003C4DE4 /* AppSettings.swift in Sources */,
-				8AAC270A2A497C5300FCAF1B /* LoadErrorView.swift in Sources */,
 				8A5D63332A45C79700EC38AA /* Bookmark.swift in Sources */,
 				8A34CF502A46138D0001242D /* API.swift in Sources */,
 				8A07CEA12A3F47A600C6D4AA /* SettingView.swift in Sources */,
 				8A3EB1612A4F14FB00607DF0 /* Statics.swift in Sources */,
 				8A5D63252A45C26900EC38AA /* BookmarkListView.swift in Sources */,
 				8A34CF522A4619A20001242D /* BookmarkItemView.swift in Sources */,
-				8AAC270C2A497E5A00FCAF1B /* LoadingView.swift in Sources */,
 				8A07CE902A3F45D300C6D4AA /* linkdingApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
