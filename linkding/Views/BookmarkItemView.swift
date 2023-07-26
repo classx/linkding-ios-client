@@ -12,16 +12,22 @@ struct BookmarkItemView: View {
     @State private var isPresentingConfirm: Bool = false
     var item: Bookmark
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 5) {
             HStack{
-                Text(item.title).font(.system(.headline, design: .monospaced)).foregroundColor(Color("titleColor")).lineLimit(1)
+                Text(item.title).font(.system(.headline, design: .default)).foregroundColor(Color("titleColor")).lineLimit(1)
                 Spacer()
             }
             HStack{
-                Text(item.description).font(.system(.body, design: .monospaced)).foregroundColor(Color("descrtiptionColor")).lineLimit(2)
+                Text(item.description).font(.system(.subheadline, design: .default)).foregroundColor(Color("descrtiptionColor")).lineLimit(2)
                 Spacer()
             }
-        }//.padding(.bottom, 10)
+//            HStack {
+//                Text("Tag").font(.system(.footnote, design: .default))
+//                Text("Tag").font(.system(.footnote, design: .default))
+//                Text("Tag").font(.system(.footnote, design: .default))
+//                Spacer()
+//            }
+        }
 
     }
 }
