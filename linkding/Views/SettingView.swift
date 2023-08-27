@@ -15,7 +15,7 @@ struct SettingView: View {
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         NavigationStack {
-            Form {
+            List {
                 Section(header: Text("Account")) {
                     TextField("http://", text: settings.$domain)
                     TextField("Token", text: settings.$token)
@@ -32,6 +32,8 @@ struct SettingView: View {
                 
             }
             .navigationTitle("Profile")
+            .listStyle(GroupedListStyle())
+            .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(
                 trailing:
                     Button(action: {
